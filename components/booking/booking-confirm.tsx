@@ -46,7 +46,7 @@ const BookingConfirm: React.FC<BookingConfirmProps> = ({
         setSeatNo(seatNumber);
     };
 
-
+    const router = useRouter();
 
     const handleBook = async () => {
         if (!numPassengers || !selectedDate || !seatNo) {

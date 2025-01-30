@@ -45,22 +45,20 @@ const SearchBuses = () => {
 
     // Fetch locations from the API
     useEffect(() => {
-        const fetchLocations = async () => {
+        async function fetchLocations() {
             try {
-                console.log("Fetching locations...");
-                const response = await fetch("/api/location", {
-                    method: "GET", // Ensure GET method is specified
-                });
+                const response = await fetch(`/api/location`);
                 const data = await response.json();
 
-                setLocations(data || []);
+                setLocations(data);
+
                 console.log("Locations fetched successfully:", data);
+
             } catch (error) {
-                console.error("Error fetching locations:", error);
-            } finally {
-                setLoading(false);
+                console.error('An error occurred while fetching locations');
+                console.error(error);
             }
-        };
+        }
 
         fetchLocations();
     }, []);
